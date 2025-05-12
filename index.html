@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jerica The Wedding</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest" crossorigin="use-credentials">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="loading">
+  <div id="password-protection" class="password-overlay">
+    <div class="password-container">
+      <h2>Welcome ❤️</h2>
+      <p>Please enter the password to continue</p>
+      <input type="password" id="password-input" placeholder="Enter password">
+      <button onclick="checkPassword()">Enter</button>
+      <p id="password-error" class="error-message"></p>
+    </div>
+  </div>
+  <div class="loading-heart">♥</div>
+  <div class="content" style="display: none;">
+    <header>
+      <div class="hero">
+        <div class="hero-content">
+          <h1><span class="jerica">"Jerica"<div class="hover-images">
+            <img src="assets/1.jpg" alt="Test 1" />
+            <img src="assets/2.jpg" alt="Test 2" />
+            <img src="assets/3.jpg" alt="Test 3" />
+            <img src="assets/4.jpg" alt="Test 4" />
+            <img src="assets/5.jpg" alt="Test 5" />
+          </div></span></h1>
+          <h1>The Wedding</h1>
+          <img src="assets/HC.svg" alt="Wedding monogram" class="monogram" />
+        </div>
+        <div class="hero-bottom">
+          <p class="hero-date">December 13th 2025 &#183; New York City</p>
+          <nav>
+            <a href="#plan">The Plan</a>
+            <a href="#hotels">Accommodations</a>
+            <a href="#rsvp">RSVP</a>
+            <a href="#registry">Gifts</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="plan">
+        <h2><span class="heart">♥</span> The Plan</h2>
+        <div id="friday">
+          <h3>Friday</h3>
+          <p>Welcome party at <a href="https://www.berniesnyc.com/" target="_blank">Bernies</a>, 6pm. Dress comfy, it's all about good vibes!</p>
+          <p class="address">332 Driggs Ave, Brooklyn, NY 11222</p>
+        </div>
+        <div id="saturday">
+          <h3>Saturday</h3>
+          <p>Ceremony at <a href="https://hotelchelsea.com/" target="_blank">The Hotel Chelsea</a>, 5pm. Drinks, Dinner, and Dancing to follow. Dress to impress—it's a formal affair!</p>
+          <p class="address">222 West 23rd Street, New York, NY 10011</p>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section id="hotels">
+        <h2><span class="heart">♥</span> Accommodations</h2>
+        <p>We've locked in a block of rooms at a discounted rate—because finding a good deal in this city is worth celebrating too. Stay close, skip the late-night subway, and toast with us a little longer!</p>
+        <ul>
+          <li>
+            <strong>Hotel One</strong> – <a href="https://hotelone.com/booking-link" target="_blank">Book here</a> (Group code: WEDDING2025)
+          </li>
+          <li>
+            <strong>Hotel Two</strong> – <a href="https://hoteltwo.com/booking-link" target="_blank">Book here</a> (Group code: JAKELOVESPARTNER)
+          </li>
+        </ul>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section id="rsvp">
+        <h2><span class="heart">♥</span> RSVP</h2>
+        <p>Please let us know if you'll be joining us by October 17th.</p>
+        <form id="rsvpForm" action="https://formspree.io/f/mkgrrwve" method="POST">
+          <label>
+            Names:
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Will you attend?
+            <select name="attendance" required>
+              <option value=""selected>Please select one</option>
+              <option value="Wedding Only">Wedding Day Only (Saturday)</option>
+              <option value="Welcome Dinner + Wedding Day">Welcome Dinner and Wedding Day (Friday & Saturday)</option>
+              <option value="Not Attending">Sadly, I can't make it</option>
+            </select>
+          </label>
+          <label>
+            Dietary restrictions:
+            <input type="text" name="diet" />
+          </label>
+          <button type="submit">Send RSVP</button>
+        </form>
+        <div id="rsvpMessage" style="display:none; color:#037704; font-style: italic; font-weight: bold; margin-top:1rem;">
+          Thank you for your RSVP! We can't wait to celebrate with you.
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section id="registry">
+        <h2><span class="heart">♥</span> Gifts</h2>
+        <p>Your presence at our wedding is the greatest gift of all! We're short on space in our little one-bedroom, but if you'd like to give something, a contribution towards starting our next chapter together would be deeply appreciated.</p>
+        <ul>
+          <li><a href="https://www.zellepay.com/" target="_blank">Zelle: +1 (860) 416-1133</a></li>
+          <li><a href="https://venmo.com/" target="_blank">Venmo: @Erica.Laut</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <div class="thank-you">
+      <p>We can't wait to celebrate with you! 🤍 Erica & Jake<br>Questions? <a href="mailto:erica.laut@gmail.com">Contact us</a></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
