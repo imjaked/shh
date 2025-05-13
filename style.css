@@ -606,17 +606,21 @@ button:active {
     font-size: 6rem;
   }
 
+  header .hero img.monogram {
+    width: 6rem;
+  }
+
   header .hero {
-    height: 80vh;
-    padding: 2rem 1.5rem 2.5rem 1.5rem;
+    height: 40rem;
+    margin: 0rem 0rem 2rem 0rem;
   }
 
   header .hero .hero-content {
-    margin-top: 12vh;
+    margin-top: 6rem;
   }
 
   header .hero img.monogram {
-    width: 8rem;
+    width: 6rem;
   }
 
   .hero-date {
@@ -624,7 +628,7 @@ button:active {
   }
 
   header .hero nav {
-    gap: 2rem;
+    gap: 1rem;
   }
 
   .password-container {
