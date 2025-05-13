@@ -347,6 +347,7 @@ button:active {
 #rsvpForm {
   width: 100%;
   margin: 0 auto;
+  padding-top: 0rem;
 }
 
 #rsvpForm label {
@@ -485,20 +486,18 @@ button:active {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-top: .9rem;
-  font-size: 0.9rem;
-  color: #666;
+  padding-top: 1rem;
+  color: #696969;
 }
 
 .address::before {
   content: '';
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 20x;
+  height: 20px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ee0908'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.8;
 }
 
 /* ==========================================================================
@@ -633,6 +632,10 @@ button:active {
 
   .password-container {
     width: 75%;
+  }
+
+  #rsvpForm {
+    padding-top: 1rem;
   }
 
   /* Disable polaroid animation on mobile */
