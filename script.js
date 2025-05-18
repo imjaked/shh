@@ -58,38 +58,27 @@ function checkAllLoaded() {
 
 function startAnimation() {
   const hoverImages = document.querySelector('.hover-images');
-  const isMobile = window.innerWidth <= 768;
-  
-  // Reset any previous animation state
-  hoverImages.classList.remove('exit');
-  Array.from(hoverImages.children).forEach(img => {
-    img.style.transform = isMobile ? 'scale(0)' : 'translateY(-80vh)';
-    img.style.opacity = '0';
-  });
-  
-  // Force a reflow
-  void hoverImages.offsetWidth;
-  
-  // Start the animation
   hoverImages.classList.add('animation-started');
   
-  // Calculate total animation duration based on viewport
-  const lastDelay = isMobile ? 2.6 : 2.6; // Last polaroid delay
-  const duration = isMobile ? 2.0 : 5.2; // Animation duration
-  const total = (lastDelay + duration) * 1000;
-  
-  // Wait for the full animation to complete before triggering exit
+  // Calculate total animation time based on viewport
+  let total;
+  if (window.innerWidth <= 768) {
+    const lastDelay = 2.6;
+    const duration = 2.0;
+    total = (lastDelay + duration) * 1000;
+  } else {
+    // Desktop: use the last animation delay + duration + time to fall out of view
+    const lastDelay = 2.6; // matches nth-child(5)
+    const duration = 4.7;  // matches fallDown5
+    const fallOutTime = 1.0; // additional time for polaroids to fall out of view
+    total = (lastDelay + duration + fallOutTime) * 1000;
+  }
+
+  // Trigger exit animation after all polaroids have fallen out of view
   setTimeout(() => {
     hoverImages.classList.remove('animation-started');
-    // Force a reflow to ensure the animation classes are properly reset
-    void hoverImages.offsetWidth;
-    // Add exit class to trigger the exit animation
+    void hoverImages.offsetWidth; // Force reflow
     hoverImages.classList.add('exit');
-    
-    // Remove the exit class after the exit animation completes
-    setTimeout(() => {
-      hoverImages.classList.remove('exit');
-    }, 300); // Match the exit animation duration
   }, total);
 }
 
