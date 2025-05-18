@@ -59,16 +59,17 @@ function checkAllLoaded() {
 function startAnimation() {
   const hoverImages = document.querySelector('.hover-images');
   hoverImages.classList.add('animation-started');
-  if (window.innerWidth <= 768) {
-    const lastDelay = 2.6;
-    const duration = 2.0;
-    const total = (lastDelay + duration) * 1000;
-    setTimeout(() => {
-      hoverImages.classList.remove('animation-started');
-      void hoverImages.offsetWidth;
-      hoverImages.classList.add('exit');
-    }, total + 100);
-  }
+  
+  // Calculate total animation duration based on viewport
+  const lastDelay = window.innerWidth <= 768 ? 2.6 : 2.6; // Last polaroid delay
+  const duration = window.innerWidth <= 768 ? 2.0 : 5.2; // Animation duration
+  const total = (lastDelay + duration) * 1000;
+  
+  setTimeout(() => {
+    hoverImages.classList.remove('animation-started');
+    void hoverImages.offsetWidth; // Force reflow
+    hoverImages.classList.add('exit');
+  }, total + 100);
 }
 
 // Password protection
