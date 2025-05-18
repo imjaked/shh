@@ -58,10 +58,22 @@ function checkAllLoaded() {
 
 function startAnimation() {
   const hoverImages = document.querySelector('.hover-images');
+  const isMobile = window.innerWidth <= 768;
+  
+  // Reset any previous animation state
+  hoverImages.classList.remove('exit');
+  Array.from(hoverImages.children).forEach(img => {
+    img.style.transform = isMobile ? 'scale(0)' : 'translateY(-80vh)';
+    img.style.opacity = '0';
+  });
+  
+  // Force a reflow
+  void hoverImages.offsetWidth;
+  
+  // Start the animation
   hoverImages.classList.add('animation-started');
   
   // Calculate total animation duration based on viewport
-  const isMobile = window.innerWidth <= 768;
   const lastDelay = isMobile ? 2.6 : 2.6; // Last polaroid delay
   const duration = isMobile ? 2.0 : 5.2; // Animation duration
   const total = (lastDelay + duration) * 1000;
@@ -77,10 +89,6 @@ function startAnimation() {
     // Remove the exit class after the exit animation completes
     setTimeout(() => {
       hoverImages.classList.remove('exit');
-      // Reset the transform to ensure proper positioning for next animation
-      Array.from(hoverImages.children).forEach(img => {
-        img.style.transform = isMobile ? 'scale(0)' : 'translateY(-80vh)';
-      });
     }, 300); // Match the exit animation duration
   }, total);
 }

@@ -521,6 +521,34 @@ button:active {
   transition: opacity 0.3s ease;
 }
 
+.hover-images.animation-started {
+  opacity: 1;
+}
+
+.hover-images.exit {
+  pointer-events: none;
+}
+
+.hover-images.exit img {
+  animation: none !important;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: scale(0.65) !important;
+  opacity: 0 !important;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) !important;
+}
+
+@keyframes polaroidExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+}
+
 .hover-images img {
   width: 220px;
   height: 270px;
@@ -578,9 +606,12 @@ button:active {
 }
 
 .hover-images.exit img {
-  animation: polaroidExit 0.3s cubic-bezier(0.77, 0, 0.175, 1) backwards;
+  animation: none !important;
   pointer-events: none;
   will-change: transform, opacity;
+  transform: scale(0.65) !important;
+  opacity: 0 !important;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) !important;
 }
 
 @keyframes polaroidExit {
@@ -684,9 +715,6 @@ button:active {
     position: absolute;
     transition: none;
   }
-  .animation-started {
-    opacity: 1;
-  }
   .animation-started img:nth-child(1) {
     animation: mobileStack1 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.2s;
@@ -707,11 +735,7 @@ button:active {
     animation: mobileStack5 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 2.6s;
   }
-  .hover-images.exit img {
-    animation: polaroidExit 0.3s cubic-bezier(0.77, 0, 0.175, 1) backwards;
-    pointer-events: none;
-    will-change: transform, opacity;
-  }
+  
   @keyframes mobileStack1 {
     0% { transform: scale(0) rotate(-5deg); opacity: 0; }
     15% { transform: scale(1) rotate(-3deg); opacity: 1; }
@@ -742,8 +766,14 @@ button:active {
     85% { transform: scale(1) rotate(-5deg); opacity: 1; }
     100% { transform: scale(1) rotate(-5deg); opacity: 1; }
   }
-  .hover-images.exit {
+  
+  .hover-images.exit img {
+    animation: none !important;
     pointer-events: none;
+    will-change: transform, opacity;
+    transform: scale(0.65) !important;
+    opacity: 0 !important;
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) !important;
   }
 }
 
