@@ -50,48 +50,26 @@ document.querySelectorAll('nav a').forEach(anchor => {
 });
 
 // --- Polaroid Animation Logic (Refactored) ---
-document.addEventListener('DOMContentLoaded', function() {
+function checkAllLoaded() {
+  return document.fonts.status === 'loaded'
+    ? Promise.resolve()
+    : document.fonts.ready;
+}
+
+function startAnimation() {
   const hoverImages = document.querySelector('.hover-images');
-  const loadingHeart = document.querySelector('.loading-heart');
-  const jerica = document.querySelector('.jerica');
-
-  function checkAllLoaded() {
-    return document.fonts.status === 'loaded'
-      ? Promise.resolve()
-      : document.fonts.ready;
-  }
-
-  function startAnimation() {
-    hoverImages.classList.add('animation-started');
-    if (window.innerWidth <= 768) {
-      const lastDelay = 2.6;
-      const duration = 2.0;
-      const total = (lastDelay + duration) * 1000;
-      setTimeout(() => {
-        hoverImages.classList.remove('animation-started');
-        void hoverImages.offsetWidth;
-        hoverImages.classList.add('exit');
-      }, total + 100);
-    }
-  }
-
-  Promise.all([
-    checkAllLoaded(),
-    ...Array.from(document.images).map(img => img.complete ? Promise.resolve() : new Promise(res => { img.onload = res; img.onerror = res; }))
-  ]).then(() => {
-    loadingHeart.classList.add('hidden');
-    document.body.classList.remove('loading');
-    setTimeout(startAnimation, 1000);
-  });
-
+  hoverImages.classList.add('animation-started');
   if (window.innerWidth <= 768) {
-    jerica.addEventListener('click', function() {
-      if (!hoverImages.classList.contains('animation-started') && !hoverImages.classList.contains('exit')) {
-        startAnimation();
-      }
-    });
+    const lastDelay = 2.6;
+    const duration = 2.0;
+    const total = (lastDelay + duration) * 1000;
+    setTimeout(() => {
+      hoverImages.classList.remove('animation-started');
+      void hoverImages.offsetWidth;
+      hoverImages.classList.add('exit');
+    }, total + 100);
   }
-});
+}
 
 // Password protection
 function checkPassword() {
@@ -99,12 +77,22 @@ function checkPassword() {
   const errorMessage = document.getElementById('password-error');
   const content = document.querySelector('.content');
   const passwordProtection = document.getElementById('password-protection');
+  const loadingHeart = document.querySelector('.loading-heart');
 
   if (password === 'room100') {
     content.style.display = 'block';
     passwordProtection.style.display = 'none';
     // Store in session storage so it persists during the session
     sessionStorage.setItem('weddingAccess', 'granted');
+    // Wait for fonts and images, then start animation
+    Promise.all([
+      checkAllLoaded(),
+      ...Array.from(document.images).map(img => img.complete ? Promise.resolve() : new Promise(res => { img.onload = res; img.onerror = res; }))
+    ]).then(() => {
+      if (loadingHeart) loadingHeart.classList.add('hidden');
+      document.body.classList.remove('loading');
+      setTimeout(startAnimation, 1000);
+    });
   } else {
     errorMessage.style.display = 'block';
     errorMessage.textContent = 'Incorrect password. Please try again.';
@@ -116,6 +104,16 @@ window.addEventListener('load', function() {
   if (sessionStorage.getItem('weddingAccess') === 'granted') {
     document.querySelector('.content').style.display = 'block';
     document.getElementById('password-protection').style.display = 'none';
+    // Wait for fonts and images, then start animation
+    const loadingHeart = document.querySelector('.loading-heart');
+    Promise.all([
+      checkAllLoaded(),
+      ...Array.from(document.images).map(img => img.complete ? Promise.resolve() : new Promise(res => { img.onload = res; img.onerror = res; }))
+    ]).then(() => {
+      if (loadingHeart) loadingHeart.classList.add('hidden');
+      document.body.classList.remove('loading');
+      setTimeout(startAnimation, 1000);
+    });
   }
 });
 
@@ -125,3 +123,14 @@ document.getElementById('password-input').addEventListener('keypress', function(
     checkPassword();
   }
 });
+
+// Mobile: allow tap to re-trigger animation if not already running
+const jerica = document.querySelector('.jerica');
+if (window.innerWidth <= 768 && jerica) {
+  jerica.addEventListener('click', function() {
+    const hoverImages = document.querySelector('.hover-images');
+    if (!hoverImages.classList.contains('animation-started') && !hoverImages.classList.contains('exit')) {
+      startAnimation();
+    }
+  });
+}
