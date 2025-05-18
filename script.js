@@ -49,53 +49,48 @@ document.querySelectorAll('nav a').forEach(anchor => {
   });
 });
 
+// --- Polaroid Animation Logic (Refactored) ---
 document.addEventListener('DOMContentLoaded', function() {
   const hoverImages = document.querySelector('.hover-images');
   const loadingHeart = document.querySelector('.loading-heart');
-  
-  // Function to check if everything is loaded
+  const jerica = document.querySelector('.jerica');
+
   function checkAllLoaded() {
-    return new Promise((resolve) => {
-      // Check if fonts are loaded
-      if (document.fonts.status === 'loaded') {
-        resolve();
-      } else {
-        document.fonts.ready.then(resolve);
+    return document.fonts.status === 'loaded'
+      ? Promise.resolve()
+      : document.fonts.ready;
+  }
+
+  function startAnimation() {
+    hoverImages.classList.add('animation-started');
+    if (window.innerWidth <= 768) {
+      const lastDelay = 2.6;
+      const duration = 2.0;
+      const total = (lastDelay + duration) * 1000;
+      setTimeout(() => {
+        hoverImages.classList.remove('animation-started');
+        void hoverImages.offsetWidth;
+        hoverImages.classList.add('exit');
+      }, total + 100);
+    }
+  }
+
+  Promise.all([
+    checkAllLoaded(),
+    ...Array.from(document.images).map(img => img.complete ? Promise.resolve() : new Promise(res => { img.onload = res; img.onerror = res; }))
+  ]).then(() => {
+    loadingHeart.classList.add('hidden');
+    document.body.classList.remove('loading');
+    setTimeout(startAnimation, 1000);
+  });
+
+  if (window.innerWidth <= 768) {
+    jerica.addEventListener('click', function() {
+      if (!hoverImages.classList.contains('animation-started') && !hoverImages.classList.contains('exit')) {
+        startAnimation();
       }
     });
   }
-
-  // Wait for everything to load
-  Promise.all([
-    checkAllLoaded(),
-    // Wait for images to load
-    ...Array.from(document.images).map(img => {
-      if (img.complete) return Promise.resolve();
-      return new Promise(resolve => {
-        img.onload = resolve;
-        img.onerror = resolve; // Resolve even on error to not block the page
-      });
-    })
-  ]).then(() => {
-    // Fade out loading heart
-    loadingHeart.classList.add('hidden');
-    
-    // Remove loading class to trigger entrance animation
-    document.body.classList.remove('loading');
-    
-    // Start polaroid animation after a short delay
-    setTimeout(() => {
-      hoverImages.classList.add('animation-started');
-      
-      // Cleanup images after animation
-      const images = hoverImages.querySelectorAll('img');
-      images.forEach(img => {
-        img.addEventListener('animationend', function() {
-          this.style.visibility = 'hidden';
-        });
-      });
-    }, 1000); // Wait for entrance animation to start
-  });
 });
 
 // Password protection
