@@ -63,9 +63,10 @@ function startAnimation() {
   // Calculate total animation time based on viewport
   let total;
   if (window.innerWidth <= 768) {
-    const lastDelay = 2.6;
-    const duration = 2.0;
-    total = (lastDelay + duration) * 1000;
+    const lastDelay = 4.2; // matches nth-child(5) delay
+    const duration = 1.2;  // matches animation duration
+    const holdTime = 1.0;  // additional time to hold before exit
+    total = (lastDelay + duration + holdTime) * 1000;
   } else {
     // Desktop: use the last animation delay + duration + time to fall out of view
     const lastDelay = 2.6; // matches nth-child(5)
