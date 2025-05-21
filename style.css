@@ -699,55 +699,55 @@ button:active {
   }
   
   .animation-started img:nth-child(1) {
-    animation: mobileStack1 1s cubic-bezier(0.25, 0.17, 0.35, 1) forwards;
+    animation: mobileStack1 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
     animation-delay: .2s;
   }
   .animation-started img:nth-child(2) {
-    animation: mobileStack2 1.2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+    animation: mobileStack2 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
     animation-delay: 1s;
   }
   .animation-started img:nth-child(3) {
-    animation: mobileStack3 1.2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-    animation-delay: 2s;
+    animation: mobileStack3 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation-delay: 1.8s;
   }
   .animation-started img:nth-child(4) {
-    animation: mobileStack4 1.2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-    animation-delay: 3s;
+    animation: mobileStack4 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation-delay: 2.6s;
   }
   .animation-started img:nth-child(5) {
-    animation: mobileStack5 1.2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-    animation-delay: 4s;
+    animation: mobileStack5 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation-delay: 3.4s;
   }
   
   @keyframes mobileStack1 {
     0% { transform: scale(0) rotate(-5deg); opacity: 0; }
-    25% { transform: scale(1) rotate(-3deg); opacity: 1; }
-    85% { transform: scale(1) rotate(-3deg); opacity: 1; }
+    30% { transform: scale(1) rotate(-3deg); opacity: 1; }
+    70% { transform: scale(1) rotate(-3deg); opacity: 1; }
     100% { transform: scale(0.4) rotate(-3deg); opacity: 0; }
   }
   @keyframes mobileStack2 {
     0% { transform: scale(0.4) rotate(8deg); opacity: 0; }
-    25% { transform: scale(1) rotate(5deg); opacity: 1; }
-    85% { transform: scale(1) rotate(5deg); opacity: 1; }
+    30% { transform: scale(1) rotate(5deg); opacity: 1; }
+    70% { transform: scale(1) rotate(5deg); opacity: 1; }
     100% { transform: scale(0.4) rotate(5deg); opacity: 0; }
   }
   @keyframes mobileStack3 {
     0% { transform: scale(0.4) rotate(-12deg); opacity: 0; }
-    25% { transform: scale(1) rotate(-8deg); opacity: 1; }
-    85% { transform: scale(1) rotate(-8deg); opacity: 1; }
+    30% { transform: scale(1) rotate(-8deg); opacity: 1; }
+    70% { transform: scale(1) rotate(-8deg); opacity: 1; }
     100% { transform: scale(0.4) rotate(-8deg); opacity: 0; }
   }
   @keyframes mobileStack4 {
     0% { transform: scale(0.4) rotate(10deg); opacity: 0; }
-    25% { transform: scale(1) rotate(7deg); opacity: 1; }
-    85% { transform: scale(1) rotate(7deg); opacity: 1; }
+    30% { transform: scale(1) rotate(7deg); opacity: 1; }
+    70% { transform: scale(1) rotate(7deg); opacity: 1; }
     100% { transform: scale(0.4) rotate(7deg); opacity: 0; }
   }
   @keyframes mobileStack5 {
     0% { transform: scale(0.4) rotate(-8deg); opacity: 0; }
-    25% { transform: scale(1) rotate(-5deg); opacity: 1; }
-    75% { transform: scale(1) rotate(-5deg); opacity: 1; }
-    100% { transform: scale(0.4) rotate(-5deg); opacity: 0; }
+    30% { transform: scale(1) rotate(-5deg); opacity: 1; }
+    70% { transform: scale(1) rotate(-5deg); opacity: 1; }
+    100% { transform: scale(0) rotate(-5deg); opacity: 0; }
   }
 
   .hover-images.exit {
