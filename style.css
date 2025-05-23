@@ -44,7 +44,7 @@ ul {
 }
 
 li {
-  margin: 0.8rem 0;
+  margin: 1.5rem 0 0;
   line-height: 1.6;
 }
 
@@ -425,7 +425,19 @@ button:active {
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(211, 8, 7, 0.2);
+}
+
+.password-container button:hover {
+  background: #b30706;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(211, 8, 7, 0.2);
+}
+
+.password-container button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(238, 9, 8, 0.2);
 }
 
 .error-message {
@@ -468,9 +480,12 @@ button:active {
 .address {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding-top: 1rem;
+  gap: .8rem;
+  padding-top: .8rem;
   color: #696969;
+  text-decoration-skip-ink: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .address::before {
