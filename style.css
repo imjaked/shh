@@ -616,6 +616,17 @@ button:active {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+
+@media (max-width: 1024px) {
+  header .hero h1 {
+    font-size: 9rem;
+  }
+
+  header .hero img.monogram {
+    width: 9rem;
+  }
+}
+
 @media (max-width: 768px) {
   main {
     grid-template-columns: 1fr;
@@ -651,8 +662,10 @@ button:active {
   }
 
   header .hero {
-    height: 40rem;
-    margin: 0rem 0rem 2rem 0rem;
+    min-height: 40rem;
+    height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   header .hero .hero-content {
